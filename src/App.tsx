@@ -305,7 +305,7 @@ const SLIDES = [
       {
         name: 'Чат курса',
         description: 'Задать вопрос и сдать ДЗ',
-        url: 'https://t.me/+your_chat_link',
+        url: 'https://t.me/c/3227334592/32/155',
         icon: '💬',
         color: TIFFANY
       },
