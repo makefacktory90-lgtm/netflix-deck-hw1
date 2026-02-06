@@ -41,6 +41,7 @@ const SLIDES = [
     type: 'FLOW',
     title: 'AI FROMSPACE',
     subtitle: 'Платформа для создания ассистентов',
+    link: { url: 'https://aifromspace.com', label: 'Открыть AI FromSpace →' },
     flow: [
       { step: 'Зайти на платформу', arrow: true },
       { step: '"Создать ассистента"', arrow: true },
@@ -122,6 +123,7 @@ const SLIDES = [
     type: 'TELEGRAM_FLOW',
     title: '@BOTFATHER',
     subtitle: 'Официальный создатель ботов в Telegram',
+    link: { url: 'https://t.me/BotFather', label: 'Открыть @BotFather →' },
     steps: [
       { action: 'Найти', target: '@BotFather в Telegram', icon: '🔍' },
       { action: 'Написать', target: '/newbot', icon: '✍️' },
@@ -275,6 +277,42 @@ const SLIDES = [
   },
   {
     id: 19,
+    type: 'RESOURCES',
+    title: 'ПОЛЕЗНЫЕ ССЫЛКИ',
+    subtitle: 'Всё что нужно — в одном месте',
+    resources: [
+      {
+        name: 'AI FromSpace',
+        description: 'Платформа для создания ассистентов',
+        url: 'https://aifromspace.com',
+        icon: '🚀',
+        color: RED
+      },
+      {
+        name: '@BotFather',
+        description: 'Создание Telegram-ботов',
+        url: 'https://t.me/BotFather',
+        icon: '🤖',
+        color: TIFFANY
+      },
+      {
+        name: 'Google AI Studio',
+        description: 'Playground для Gemini',
+        url: 'https://aistudio.google.com',
+        icon: '🧠',
+        color: RED
+      },
+      {
+        name: 'Чат курса',
+        description: 'Задать вопрос и сдать ДЗ',
+        url: 'https://t.me/+your_chat_link',
+        icon: '💬',
+        color: TIFFANY
+      },
+    ],
+  },
+  {
+    id: 20,
     type: 'CTA',
     title: 'OFFICE HOURS',
     subtitle: '7 февраля, 11:00–12:00 по Москве',
@@ -491,6 +529,20 @@ function App() {
                   <p className="text-gray-300">{slide.tip}</p>
                 </motion.div>
               )}
+
+              {(slide as any).link && (
+                <motion.a
+                  href={(slide as any).link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 1 }}
+                  className="inline-flex items-center gap-2 mt-6 px-6 py-3 bg-[#E50914] hover:bg-[#ff1a1a] text-white font-bold rounded-lg transition-colors"
+                >
+                  {(slide as any).link.label}
+                </motion.a>
+              )}
             </div>
           )}
 
@@ -674,6 +726,20 @@ function App() {
                 >
                   <p className="text-[#E50914]">{slide.warning}</p>
                 </motion.div>
+              )}
+
+              {(slide as any).link && (
+                <motion.a
+                  href={(slide as any).link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 1 }}
+                  className="inline-flex items-center gap-2 mt-6 px-6 py-3 bg-[#0ABAB5] hover:bg-[#0cd4cd] text-white font-bold rounded-lg transition-colors"
+                >
+                  {(slide as any).link.label}
+                </motion.a>
               )}
             </div>
           )}
@@ -923,6 +989,54 @@ function App() {
                   </div>
                   <p className="text-white font-bold">→ {slide.challenge?.result}</p>
                 </motion.div>
+              </div>
+            </div>
+          )}
+
+          {/* RESOURCES SLIDE */}
+          {slide.type === 'RESOURCES' && (
+            <div className="w-full h-full flex flex-col justify-center p-8 md:p-16 bg-[#0A0A0A] film-grain">
+              <motion.h2
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="font-display text-4xl md:text-6xl font-black text-white uppercase mb-2"
+              >
+                {slide.title}
+              </motion.h2>
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.1 }}
+                className="text-gray-400 text-lg mb-10"
+              >
+                {slide.subtitle}
+              </motion.p>
+
+              <div className="grid md:grid-cols-2 gap-6 max-w-4xl">
+                {(slide as any).resources?.map((resource: any, i: number) => (
+                  <motion.a
+                    key={i}
+                    href={resource.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2 + i * 0.1 }}
+                    className="group bg-[#1a1a1a] border border-gray-800 rounded-lg p-6 hover:border-[#E50914] transition-all hover:scale-[1.02]"
+                  >
+                    <div className="flex items-center gap-4 mb-3">
+                      <span className="text-4xl">{resource.icon}</span>
+                      <div>
+                        <h3 className="text-white text-xl font-bold group-hover:text-[#E50914] transition-colors">{resource.name}</h3>
+                        <p className="text-gray-500 text-sm">{resource.description}</p>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-2 text-sm" style={{ color: resource.color }}>
+                      <span>Открыть</span>
+                      <span className="group-hover:translate-x-1 transition-transform">→</span>
+                    </div>
+                  </motion.a>
+                ))}
               </div>
             </div>
           )}
