@@ -538,7 +538,7 @@ function App() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 1 }}
-                  className="inline-flex items-center gap-2 mt-6 px-6 py-3 bg-[#E50914] hover:bg-[#ff1a1a] text-white font-bold rounded-lg transition-colors"
+                  className="relative z-50 inline-flex items-center gap-2 mt-6 px-6 py-3 bg-[#E50914] hover:bg-[#ff1a1a] text-white font-bold rounded-lg transition-colors"
                 >
                   {(slide as any).link.label}
                 </motion.a>
@@ -736,7 +736,7 @@ function App() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 1 }}
-                  className="inline-flex items-center gap-2 mt-6 px-6 py-3 bg-[#0ABAB5] hover:bg-[#0cd4cd] text-white font-bold rounded-lg transition-colors"
+                  className="relative z-50 inline-flex items-center gap-2 mt-6 px-6 py-3 bg-[#0ABAB5] hover:bg-[#0cd4cd] text-white font-bold rounded-lg transition-colors"
                 >
                   {(slide as any).link.label}
                 </motion.a>
@@ -1022,7 +1022,7 @@ function App() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.2 + i * 0.1 }}
-                    className="group bg-[#1a1a1a] border border-gray-800 rounded-lg p-6 hover:border-[#E50914] transition-all hover:scale-[1.02]"
+                    className="relative z-50 group bg-[#1a1a1a] border border-gray-800 rounded-lg p-6 hover:border-[#E50914] transition-all hover:scale-[1.02]"
                   >
                     <div className="flex items-center gap-4 mb-3">
                       <span className="text-4xl">{resource.icon}</span>
